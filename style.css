@@ -41,6 +41,7 @@ h1 {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
+    cursor: pointer;
 }
 
 .unselected {
@@ -131,4 +132,13 @@ h1 {
 
 td, th {
     text-align: center;
+}
+
+.swipeup {
+    translate: 0 -50px;
+    transition: all 0.1s ease;
+}
+.swipedown {
+    translate: 0 50px;
+    transition: all 0.1s ease;
 }
