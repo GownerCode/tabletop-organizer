@@ -19,8 +19,14 @@ class TabletopAPI
 
     public function getPersonByNameIP($name)
     {
+        $ip = '';
+        if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
         $stmt = $this->pdo->prepare("SELECT * FROM person WHERE name = :name AND ip = :ip");
-        $stmt->execute(['name' => $name, 'ip' => $_SERVER['REMOTE_ADDR']]);
+        $stmt->execute(['name' => $name, 'ip' => $ip]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -46,8 +52,14 @@ class TabletopAPI
 
     public function upsertUser($name)
     {
+        $ip = '';
+        if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
         $stmt = $this->pdo->prepare("INSERT INTO person (name, useragent) VALUES (:name, :useragent) ON DUPLICATE KEY UPDATE name = :name");
-        $stmt->execute(['name' => $name, 'ip' => $_SERVER['REMOTE_ADDR']]);
+        $stmt->execute(['name' => $name, 'ip' => $ip]);
     }
 
     public function getAttendanceForGameWeek($game_id, $weekNum, $year)
@@ -80,22 +92,34 @@ class TabletopAPI
 
     public function getAttendanceForPersonGameWeek($name, $game_id, $week_id)
     {
+        $ip = '';
+        if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
         $stmt = $this->pdo->prepare("SELECT * FROM attendance a JOIN person p ON a.person_id = p.id WHERE p.name = :name AND p.useragent = :useragent AND a.game_id = :game_id AND a.week_id = :week_id");
-        $stmt->execute(['name' => $name, 'ip' => $_SERVER['REMOTE_ADDR'], 'game_id' => $game_id, 'week_id' => $week_id]);
+        $stmt->execute(['name' => $name, 'ip' => $ip, 'game_id' => $game_id, 'week_id' => $week_id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     function upsertAttendanceRecord($person_name, $game_id, $year, $weekNum, $monday, $tuesday, $wednesday, $thursday, $friday, $saturday, $sunday)
     {
+        $ip = '';
+        if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
         // Check if the person already exists
         $stmt = $this->pdo->prepare("SELECT id FROM person WHERE name = ? AND ip = ?");
-        $stmt->execute([$person_name, $_SERVER['REMOTE_ADDR']]);
+        $stmt->execute([$person_name, $ip]);
         $person_id = $stmt->fetchColumn();
 
         // If not, insert a new person
         if (!$person_id) {
             $stmt = $this->pdo->prepare("INSERT INTO person (name, ip) VALUES (?, ?)");
-            $stmt->execute([$person_name, $_SERVER['REMOTE_ADDR']]);
+            $stmt->execute([$person_name, $ip]);
             $person_id = $this->pdo->lastInsertId();
         }
 
