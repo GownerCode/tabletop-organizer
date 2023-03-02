@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>tabletop.io</title>
+  </head>
+  <body>
+    <div class="container main">
+      <div class="row">
+        <div class="col-12"><h1>Tabletop Organizer</h1></div>
+      </div>
+
+      <div class="row selectors">
+        <div class="col">
+          <label class="form-label" for="game-select">Select game:</label>
+          <select
+            id="game-select"
+            class="form-select"
+            aria-label="Default select example"
+          >
+          </select>
+        </div>
+
+        <div class="col">
+          <label class="form-label" for="week-select">Select week:</label>
+          <select
+            id="week-select"
+            class="form-select"
+            aria-label="Default select example"
+          >
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 week-view">
+          <div class="day">
+            <div class="day-card unselected" id="monday">
+              <span class="day-label">Mo</span>
+              <span class="date-label">ALI</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="tuesday">
+              <span class="day-label">Tu</span>
+              <span class="date-label">24.01.2023</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="wednesday">
+              <span class="day-label">We</span>
+              <span class="date-label">25.01.2023</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="thursday">
+              <span class="day-label">Th</span>
+              <span class="date-label">26.01.2023</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="friday">
+              <span class="day-label">Fr</span>
+              <span class="date-label">27.01.2023</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="saturday">
+              <span class="day-label">Sa</span>
+              <span class="date-label">28.01.2023</span>
+            </div>
+          </div>
+          <div class="day">
+            <div class="day-card unselected" id="sunday">
+              <span class="day-label">Su</span>
+              <span class="date-label">29.01.2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="save-area">
+        <div class="save-area-inner">
+          <input
+            id="name-input"
+            type="text"
+            class="form-control"
+            placeholder="Type name here..."
+          />
+          <a id="save-button" type="text" class="btn btn-success"
+            >Save Availability</a
+          >
+        </div>
+    </div>
+
+    <div class="container">
+      <table id="attendance-table" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Person</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+          </tr>
+          <tr class="table-dates">
+            <th></th>
+            <th>23.01.2023</th>
+            <th>24.01.2023</th>
+            <th>25.01.2023</th>
+            <th>26.01.2023</th>
+            <th>27.01.2023</th>
+            <th>28.01.2023</th>
+            <th>29.01.2023</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="success-popup" class="popup submit-success">
+      <button class="close-popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="popup-content">
+        <h3>Success!</h3>
+        <p id="success-popup-text">Your availability could not be saved.</p>
+      </div>
+    </div>
+
+    <div id="fail-popup" class="popup submit-failure">
+      <button class="close-popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="popup-content">
+        <h3>Failure!</h3>
+        <p id="failure-popup-text">Your availability could not be saved.</p>
+      </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/492a839017.js" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  </body>
+</html>

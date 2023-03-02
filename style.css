@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body, html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.week-view {
+    margin: 2em 0 2em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 1em 0 1em 0;
+    padding: 0 0 0.5em;
+    border-bottom: 2px solid black;
+    text-align: center;
+}
+
+.selectors {
+    border-bottom: 1px solid black;
+    padding: 0 0 1em 0;
+}
+
+.day-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 0.5em;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+}
+
+.unselected {
+    background-color: rgb(182, 182, 182);
+    transition: all 100ms;
+    -webkit-transition: all 0.5s ease;
+}
+
+.selected {
+    background-color: aqua;
+    transition: all 100ms;
+    -webkit-transition: all 0.5s ease;
+}
+
+.day-label {
+    font-size: xx-large;
+}
+
+.save-area {
+    border-bottom: 1px solid black;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.save-area-inner {
+    width: 30%;
+    display: flex;
+}
+
+#save-button {
+    margin-left: 1em;
+}
+
+.popup {
+    position: fixed;
+    min-width: 11em;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 15%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-radius: 10px;
+    display: none;
+}
+
+.submit-success {
+    background-color: rgba(100, 255, 100, 0.715);
+}
+
+.submit-failure {
+    background-color: rgba(255, 100, 100, 0.715);
+}
+
+.close-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em 0.75em 0 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 101;
+}
+
+.popup-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em 0 0 1em;
+}
+
+/* .tc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.table-yes {
+    background-color: rgb(100, 255, 100);
+}
+
+.table-no {
+    background-color: rgb(255, 100, 100);
+}
+
+td, th {
+    text-align: center;
+}
