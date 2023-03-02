@@ -9,6 +9,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .day {
@@ -16,6 +17,15 @@ body, html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.c {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 h1 {
@@ -65,15 +75,23 @@ h1 {
     padding-bottom: 2em;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .save-area-inner {
-    width: 30%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-width: 20em;
 }
 
-#save-button {
-    margin-left: 1em;
+.name-input {
+    width: 80%;
+}
+
+.save-btn {
+    width: 20%;
 }
 
 .popup {
@@ -141,4 +159,11 @@ td, th {
 .swipedown {
     translate: 0 50px;
     transition: all 0.1s ease;
+}
+
+.test {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
 }
